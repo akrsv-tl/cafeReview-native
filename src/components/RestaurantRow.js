@@ -7,7 +7,7 @@ import {
   TouchableOpacity
 } from 'react-native';
 
-import Icon from 'react-native-vector-icons/FontAwesome';
+import Stars from 'components/Stars';
 
 export default class RestaurantRow extends React.Component {
   state = {
@@ -15,7 +15,8 @@ export default class RestaurantRow extends React.Component {
   }
 
   infoPressed = () => {
-    this.setState({ showInfo: !this.state.showInfo });
+    // this.setState({ showInfo: !this.state.showInfo });
+    this.props.navigation.navigate('Info');
   }
 
   render() {
@@ -29,9 +30,7 @@ export default class RestaurantRow extends React.Component {
 
         <View style={styles.row}>
           <View style={styles.stars}>
-            <Icon name="star" color='#ffd64c' />
-            <Icon name="star" color='#ffd64c' />
-            <Icon name="star-half" color='#ffd64c' />
+            <Stars rating={place.rating} />
           </View>
           <View style={styles.nameAddress}>
             <Text>{place.name}</Text>
