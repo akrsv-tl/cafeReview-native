@@ -1,16 +1,89 @@
 import React from 'react';
 
+import Stars from 'components/Stars';
+
 import { 
   View,
-  Text
+  Text,
+  ScrollView,
+  Image,
+  StyleSheet,
+  TouchableOpacity
  } from 'react-native';
 
  export default class RestaurantInfo extends React.Component {
+
+  static navigationOptions = {
+    title: 'Restaurant Info'
+  }
+
+  addReview = () => {
+    this.props.navigation.navigate('AddReview');
+  }
+
    render() {
+     const place = this.props.navigation.getParam('place');
+
      return (
-       <View>
-         <Text>Info</Text>
-       </View>
+       <ScrollView style={styles.root}>
+         <View style={styles.infoHeader}>
+           <Image
+            source={{
+              uri: place.image
+            }}
+            style={styles.image}
+            resizeMode='cover'
+           />
+
+           <View style={styles.info}>
+             <Text style={styles.name}>{place.name}</Text>
+             <Text style={styles.address}>{place.address}</Text>
+             <Stars rating={place.rating} />
+             <TouchableOpacity style={styles.button} onPress={this.addReview}>
+               <Text style={styles.buttonText}>Add Review</Text>
+             </TouchableOpacity>
+           </View>
+         </View>
+       </ScrollView>
      )
    }
  }
+
+ const styles = StyleSheet.create({
+   root: {
+     flex: 1,
+     backgroundColor: '#fff'
+   },
+   infoHeader: {
+     flexDirection: 'row'
+   },
+   info: {
+     marginTop: 20
+   },
+   name: {
+     fontSize: 24
+   },
+   address: {
+     color: 'grey',
+     marginBottom: 5
+   },
+   image: {
+     width: 100,
+     height: 100,
+     margin: 20
+   },
+   button: {
+     borderWidth: 1,
+     borderColor: '#0066cc',
+     borderRadius: 14,
+     paddingHorizontal: 10,
+     paddingVertical: 3,
+     backgroundColor: '#fff',
+     marginTop: 10
+   },
+   buttonText: {
+     color: '#0066cc',
+     fontSize: 12,
+     textAlign: 'center'
+   }
+ })
