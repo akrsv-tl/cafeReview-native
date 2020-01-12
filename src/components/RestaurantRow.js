@@ -4,8 +4,7 @@ import {
   View,
   Text,
   StyleSheet,
-  TouchableOpacity,
-  Vibration
+  TouchableOpacity
 } from 'react-native';
 
 import Stars from 'components/Stars';
@@ -20,8 +19,6 @@ export default class RestaurantRow extends React.Component {
     this.props.navigation.navigate('Info', { 
       place: this.props.place
     });
-    Vibration.vibrate(500);
-    Vibration.cancel();
   }
 
   render() {
