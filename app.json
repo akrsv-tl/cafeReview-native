@@ -11,9 +11,9 @@
     ],
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/food-and-restaurant.png",
+    "icon": "./assets/pizza-icon.png",
     "splash": {
-      "image": "./assets/food-and-restaurant.png",
+      "image": "./assets/food-and-restaurant512.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
@@ -24,7 +24,8 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.moreira.cafeReview"
     },
     "description": ""
   }
